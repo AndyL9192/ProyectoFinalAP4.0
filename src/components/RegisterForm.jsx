@@ -1,7 +1,11 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { API_URL } from "../utils/const";
 
 export const RegisterForm = () => {
   const ref = useRef(null);
+  //una useNavigate para redirigir a la pagina deseada
+  const navigate = useNavigate();
 
   //captura la informacion del formulario y prevenir que se recaargue lapagina
   const handleSubmit = async (e) => {
@@ -22,11 +26,13 @@ export const RegisterForm = () => {
       password,
     };
 
-    // Le indicamos que vamos a usar elmetodo POST y lainformacion a enviar
+    // Le indicamos que vamos a usar elmetodo POST y la informacion a enviar
     //headers : es una cabecera que indica que la informacion a enviar es de tipo
-    const req = await fetch("http://http://localhost:5173/register", {
+    const req = await fetch(`${API_URL}/register`, {
       method: "POST",
+      // convierte cualquier objeto de javaScript en Json
       body: JSON.stringify(user),
+      // headers le avisa que la info es en tipo json
       headers: {
         "Content-type": "application/json",
       },
@@ -36,6 +42,9 @@ export const RegisterForm = () => {
     if (req.status !== 201) return alert("Error al registrar usuario");
 
     ref.current.reset();
+
+    // envia al usuario a la pagina de login despues que este se registre
+    navigate("/login");
   };
 
   return (
