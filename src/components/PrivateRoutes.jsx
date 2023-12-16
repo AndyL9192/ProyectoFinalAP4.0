@@ -15,7 +15,7 @@ export const PrivateRoutes = () => {
   if (auth === undefined) return <div>Loding...</div>;
 
   return (
-    <div>
+    <div className="layout">
       <Navbar />
       <Outlet />
     </div>
