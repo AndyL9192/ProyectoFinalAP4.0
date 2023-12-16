@@ -46,12 +46,42 @@ export const LoginForm = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className="w-100 d-flex justify-content-center aling-items-center h-10">
       <form onSubmit={handleSubmit} ref={ref}>
-        <input type="email" placeholder="my-email@mail.com" name="email" />
-        <input type="password" placeholder="******" name="password" />
-        <button>Login</button>
+        <h1 className="h3 mb-3 fw-normal">Login</h1>
+        <div className="form-floating">
+          <input
+            type="email"
+            name="email"
+            className="form-control"
+            id="floatingInput"
+            placeholder="my-email@mail.com"
+          />
+          <label htmlFor="floatingInput"></label>
+        </div>
+
+        <div className="form-floating">
+          <input
+            type="password"
+            name="password"
+            className="form-control"
+            id="floatingInput"
+            placeholder="******"
+          />
+          <label htmlFor="floatingInput"></label>
+        </div>
+        <div className="form-check text-start my-3">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            value="remember-me"
+            id="flexCheckDEfault"
+          />
+          <label htmlFor="flexCheckDefault">remember me</label>
+          <button className="btn btn-primary w-100 py-2" type="submit">
+            sing in
+          </button>
+        </div>
       </form>
     </div>
   );

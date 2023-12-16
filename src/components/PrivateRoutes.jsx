@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/authProvider";
+import { Navbar } from "reactstrap";
 
 export const PrivateRoutes = () => {
   const { auth } = useContext(AuthContext);
@@ -13,5 +14,10 @@ export const PrivateRoutes = () => {
 
   if (auth === undefined) return <div>Loding...</div>;
 
-  return <Outlet />;
+  return (
+    <div>
+      <Navbar />
+      <Outlet />
+    </div>
+  );
 };
