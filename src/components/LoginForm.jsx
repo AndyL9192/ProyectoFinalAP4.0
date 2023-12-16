@@ -1,8 +1,14 @@
 import { useRef } from "react";
 import { API_URL } from "../utils/const";
+import { useContext } from "react";
+import { AuthContext } from "../providers/authProvider";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
   const ref = useRef(null);
+
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,9 +38,11 @@ export const LoginForm = () => {
 
     const res = await req.json();
 
+    login(res);
+
     ref.current.reset();
 
-    console.log(res);
+    navigate("/");
   };
 
   return (
